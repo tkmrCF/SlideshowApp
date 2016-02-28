@@ -10,60 +10,120 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var Lavel: UILabel!
-    
     @IBOutlet weak var ImageVew: UIImageView!
     
-        let myImage1 = UIImage(named:"IMG_1061.jpg")
-        let myImage2 = UIImage(named:"IMG_2727.jpg")
-        let myImage3 = UIImage(named:"IMG_1993.jpg")
-    var CountPosition:Int = 1
-    var AoutSwitch:Bool   = false
+    @IBOutlet weak var Btn1: UIButton!
+    @IBOutlet weak var Btn3: UIButton!
+    @IBOutlet weak var Btn2: UIButton!
+
+    let myImage1 = UIImage(named:"IMG_1061.jpg")
+    let myImage2 = UIImage(named:"IMG_2727.jpg")
+    let myImage3 = UIImage(named:"IMG_1993.jpg")
     
+    //画像のポジションを管理する　０〜２
+    var CountPosition:Int = 0
+    
+    // 自動再生を管理する　true：オート中
+    var AoutSwitch:Bool   = false //停止中
+    
+    //タイマー.
+    var timer : NSTimer!
+   
+    // 拡大ボタンの処理
+    @IBAction func Bottan4(sender: AnyObject) {
+        
+        AoutSwitch = false //オート停止にする
+        //timerが動いてるなら.
+        if timer.valid == true {
+            // タイマーを停止する //timerを破棄する.
+            timer.invalidate()
+        }
+        Lavel.text = String(Lavel.text!)+"   停止"
+        // ボタン１、ボタン３を有効にする
+        self.Btn1.enabled = true
+        self.Btn3.enabled = true
+        // ボタン２のラベルを変更する
+        self.Btn2.setTitle("自動再生", forState: UIControlState.Normal)
+    }
+    
+    // 画面遷移の準備
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        // segueから遷移先のSecondVewを取得する
+        let ssv:SecondVew = segue.destinationViewController as! SecondVew
+        // 遷移先のSecondVewで宣言しているzに値を代入して渡す
+        ssv.z = CountPosition
+    }
     
     @IBAction func Bottan1(sender: AnyObject) {
-        Lavel.text = "OK1"
-        ImageVew.image = myImage1
-        
 
         if --CountPosition < 0 {
             CountPosition = 2
         }
-        Lavel.text = String(CountPosition)
-        
+        self.ImaveSet(CountPosition)
     }
 
     @IBAction func Bottan2(sender: AnyObject) {
-        Lavel.text = "OK2"
-        ImageVew.image = myImage2
-        
-        Lavel.text = String(CountPosition)
-        
-        if AoutSwitch == false{
-            AoutSwitch = true
-            Lavel.text = String(CountPosition)+" true"
+
+        if AoutSwitch == false{//オート停止中なら
+            AoutSwitch = true //オート中にする
+
+            //timerを生成する.
+            timer = NSTimer.scheduledTimerWithTimeInterval(
+                2,
+                target: self,
+            selector:Selector("step"),
+                userInfo: nil,
+                repeats: true)
+            
+            // ボタン１、ボタン３を無効にする
+            self.Btn1.enabled = false
+            self.Btn3.enabled = false
+            
+            // ボタン２のラベルを変更する
+            self.Btn2.setTitle("停止", forState: UIControlState.Normal)
+
+
         }else{
-            AoutSwitch = false
-            Lavel.text = String(CountPosition)+" false"
+            AoutSwitch = false //オート停止にする
+            
+            //timerが動いてるなら.
+            if timer.valid == true {
+                // タイマーを停止する //timerを破棄する.
+                timer.invalidate()
+            }
+
+            //Lavel.text = String(Lavel.text!)+"   停止"
+            
+            // ボタン１、ボタン３を有効にする
+            self.Btn1.enabled = true
+            self.Btn3.enabled = true
+            
+            // ボタン２のラベルを変更する
+            self.Btn2.setTitle("自動再生", forState: UIControlState.Normal)
+            
+           self.ImaveSet(CountPosition)
         }
+        
     }
     
     @IBAction func Bottan3(sender: AnyObject) {
-        Lavel.text = "OK3"
-        ImageVew.image = myImage3
 
         if ++CountPosition > 2 {
             CountPosition = 0
         }
-        Lavel.text = String(CountPosition)
-        
+        self.ImaveSet(CountPosition)
     }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+ 
+        // 画像のaspect比を維持し、ちょうどはいるようにする
+        ImageVew.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        //ImageVew.image = myImage2
+        self.ImaveSet(CountPosition)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +131,37 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // タイマーから定期的に呼び出されるメソッド
+    func step(){
+        if ++CountPosition > 2 {
+            CountPosition = 0
+        }
+        
+        self.ImaveSet(CountPosition)
+        Lavel.text = String(Lavel.text!)+"  自動再生中"
+    }
+
+    
+    //  表示する画像のセットする
+    func ImaveSet( count:Int ){
+        
+        switch(count){
+        case 0:
+            ImageVew.image = myImage1
+        case 1:
+            ImageVew.image = myImage2
+        case 2:
+            ImageVew.image = myImage3
+        default: break
+        }
+        Lavel.text = "画像番号"+String(CountPosition)
+    }
+    
+    @IBAction func unwind(segue: UIStoryboardSegue) {
+        // 他の画面から segue を使って戻ってきた時に呼ばれる
+        self.ImaveSet(CountPosition)
+    }
+    
     
     /**
     それでは
@@ -91,9 +182,6 @@ class ViewController: UIViewController {
     
     またおそらくですが画面上に画像が表示されているのでしたら、UIImageではなくUIImageViewを使用して、画像を表示しているかと思われます。
     **/
-    
-    
-    
     
 
 }

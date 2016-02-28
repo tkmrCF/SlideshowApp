@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A696BF491C82CA0D00D8FA7F /* SecondVew.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696BF481C82CA0D00D8FA7F /* SecondVew.swift */; };
 		A6D67A691C7F2FB2007480D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D67A681C7F2FB2007480D2 /* AppDelegate.swift */; };
 		A6D67A6B1C7F2FB2007480D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D67A6A1C7F2FB2007480D2 /* ViewController.swift */; };
 		A6D67A6E1C7F2FB2007480D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D67A6C1C7F2FB2007480D2 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A696BF481C82CA0D00D8FA7F /* SecondVew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondVew.swift; sourceTree = "<group>"; };
 		A6D67A651C7F2FB2007480D2 /* SlideshowApp01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideshowApp01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D67A681C7F2FB2007480D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6D67A6A1C7F2FB2007480D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				A6D67A681C7F2FB2007480D2 /* AppDelegate.swift */,
 				A6D67A6A1C7F2FB2007480D2 /* ViewController.swift */,
+				A696BF481C82CA0D00D8FA7F /* SecondVew.swift */,
 				A6D67A6C1C7F2FB2007480D2 /* Main.storyboard */,
 				A6D67A801C7F3C92007480D2 /* Document.swift */,
 				A6D67A7A1C7F34B2007480D2 /* IMG_1061.jpg */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A696BF491C82CA0D00D8FA7F /* SecondVew.swift in Sources */,
 				A6D67A6B1C7F2FB2007480D2 /* ViewController.swift in Sources */,
 				A6D67A691C7F2FB2007480D2 /* AppDelegate.swift in Sources */,
 				A6D67A811C7F3C92007480D2 /* Document.swift in Sources */,
@@ -300,6 +304,7 @@
 				A6D67A791C7F2FB2007480D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
