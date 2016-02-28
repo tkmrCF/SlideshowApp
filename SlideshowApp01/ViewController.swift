@@ -137,23 +137,16 @@ class ViewController: UIViewController {
     
     //  画像のタップでの処理
     func tapImg(sender:UITapGestureRecognizer){
-        print("tapped AAAAAAAAAAAAAAAAA")
-
-        //let Sv = SecondVew()
-        //Sv.z = CountPosition
-
+        print("tapped AAAAAAAAAAAAAAAA")
         
-        // SecondVewに移動する.
-        //let SSv = SecondVew()
-        //self.presentViewController(SSv, animated: true, completion: nil)
+        //  SecondVewのzにCountPositionをセットする
+        //
+        //
+        //
         
-        /*
-        var nex = UIViewController()
-        let selfStoryboard = self.storyboard
-        //nex = selfStoryboard.instantiateViewControllerWithIdentifier("next") as UIViewController
-        nex = selfStoryboard!.instantiateViewControllerWithIdentifier("next")
-        self.presentViewController(nex, animated: true, completion: nil)
-        */
+        let aaa = self.storyboard!.instantiateViewControllerWithIdentifier( "nextbord" )
+            // "nextbord"は、SecondVewのStoryBord ID
+        self.presentViewController( aaa, animated: true, completion: nil)
         
         print("tapped ZZZZZZZZZZZZZZZZ")
     }
