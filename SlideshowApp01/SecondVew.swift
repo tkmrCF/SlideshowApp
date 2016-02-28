@@ -24,7 +24,7 @@ class SecondVew: UIViewController {
         super.viewDidLoad()
         // Do view setup here.
         
-
+        print( z )
         print("tapped BBBBBBBBBB")
 
         ImageView201.contentMode = UIViewContentMode.ScaleAspectFit

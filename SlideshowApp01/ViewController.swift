@@ -126,11 +126,12 @@ class ViewController: UIViewController {
         
         self.ImaveSet(CountPosition)
         
-        /**  Try タップ処理　**/
+        /**  ImageVewをタップ出来るようにする　**/
         self.ImageVew.userInteractionEnabled = true
         let myTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapImg:")
+            // ":"が無いと落ちる。
         self.ImageVew.addGestureRecognizer(myTap)
-        /** Try タップ処理　**/
+        /**  ImageVewをタップ出来るようにする　**/
 
     }
     
@@ -138,15 +139,23 @@ class ViewController: UIViewController {
     func tapImg(sender:UITapGestureRecognizer){
         print("tapped AAAAAAAAAAAAAAAAA")
 
-        let Sv = SecondVew()
-        Sv.z = CountPosition
+        //let Sv = SecondVew()
+        //Sv.z = CountPosition
+
         
         // SecondVewに移動する.
-        let SSv = SecondVew()
-        self.presentViewController(SSv, animated: true, completion: nil)
+        //let SSv = SecondVew()
+        //self.presentViewController(SSv, animated: true, completion: nil)
+        
+        /*
+        var nex = UIViewController()
+        let selfStoryboard = self.storyboard
+        //nex = selfStoryboard.instantiateViewControllerWithIdentifier("next") as UIViewController
+        nex = selfStoryboard!.instantiateViewControllerWithIdentifier("next")
+        self.presentViewController(nex, animated: true, completion: nil)
+        */
         
         print("tapped ZZZZZZZZZZZZZZZZ")
-
     }
 
     override func didReceiveMemoryWarning() {
