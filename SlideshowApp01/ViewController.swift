@@ -139,6 +139,22 @@ class ViewController: UIViewController {
     func tapImg(sender:UITapGestureRecognizer){
         print("tapped AAAAAAAAAAAAAAAA")
         
+        //  自動再生中なら、停止にする
+        if AoutSwitch == true {
+            AoutSwitch = false //オート停止にする
+            if timer.valid == true {
+                // タイマーを停止する //timerを破棄する.
+                timer.invalidate()
+            }
+            Lavel.text = String(Lavel.text!)+"   停止"
+            // ボタン１、ボタン３を有効にする
+            self.Btn1.enabled = true
+            self.Btn3.enabled = true
+            // ボタン２のラベルを変更する
+            self.Btn2.setTitle("自動再生", forState: UIControlState.Normal)
+        }
+        
+        
         //  SecondVewのzにCountPositionをセットする
         //
         //
