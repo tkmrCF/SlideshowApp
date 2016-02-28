@@ -24,9 +24,12 @@ class SecondVew: UIViewController {
         super.viewDidLoad()
         // Do view setup here.
         
+
+        print("tapped BBBBBBBBBB")
+
         ImageView201.contentMode = UIViewContentMode.ScaleAspectFit
         
-        //ImageView201.image = myImage1
+        print("tapped CCCCCCCCCC")
         
         switch(z){
         case 0:
@@ -37,6 +40,7 @@ class SecondVew: UIViewController {
             ImageView201.image = myImage3
         default: break
         }
+        
         
     }
     

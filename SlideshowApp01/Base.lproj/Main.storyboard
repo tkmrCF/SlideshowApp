@@ -55,12 +55,12 @@
                                     <constraint firstAttribute="height" constant="128" id="y7s-tb-p4B"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v80-fs-br7">
-                                <rect key="frame" x="277" y="360" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v80-fs-br7">
+                                <rect key="frame" x="285" y="360" width="30" height="30"/>
                                 <state key="normal" title="拡大"/>
                                 <connections>
                                     <action selector="Bottan4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fRz-Ii-2h0"/>
-                                    <segue destination="VLX-2h-Ajb" kind="show" id="0tw-ZJ-kjx"/>
+                                    <segue destination="VLX-2h-Ajb" kind="show" identifier="next" id="0tw-ZJ-kjx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -84,6 +84,7 @@
                         <outlet property="Btn1" destination="u7j-VY-ELg" id="fpO-5w-BVF"/>
                         <outlet property="Btn2" destination="abr-Vp-k7L" id="7Uk-Sc-NJQ"/>
                         <outlet property="Btn3" destination="0oR-Vz-fcz" id="xhu-gY-6TX"/>
+                        <outlet property="Btn4" destination="v80-fs-br7" id="II5-UL-Wio"/>
                         <outlet property="ImageVew" destination="gkL-MX-05s" id="lqT-Vn-ZXn"/>
                         <outlet property="Lavel" destination="RKK-hM-FGT" id="7o7-GW-nz0"/>
                     </connections>

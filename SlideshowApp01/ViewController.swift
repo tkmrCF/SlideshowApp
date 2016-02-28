@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Btn1: UIButton!
     @IBOutlet weak var Btn3: UIButton!
     @IBOutlet weak var Btn2: UIButton!
+    @IBOutlet weak var Btn4: UIButton!
 
     let myImage1 = UIImage(named:"IMG_1061.jpg")
     let myImage2 = UIImage(named:"IMG_2727.jpg")
@@ -31,19 +32,21 @@ class ViewController: UIViewController {
    
     // 拡大ボタンの処理
     @IBAction func Bottan4(sender: AnyObject) {
-        
-        AoutSwitch = false //オート停止にする
+
         //timerが動いてるなら.
-        if timer.valid == true {
-            // タイマーを停止する //timerを破棄する.
-            timer.invalidate()
+        if AoutSwitch == true {
+            AoutSwitch = false //オート停止にする
+            if timer.valid == true {
+                // タイマーを停止する //timerを破棄する.
+                timer.invalidate()
+            }
+            Lavel.text = String(Lavel.text!)+"   停止"
+            // ボタン１、ボタン３を有効にする
+            self.Btn1.enabled = true
+            self.Btn3.enabled = true
+            // ボタン２のラベルを変更する
+            self.Btn2.setTitle("自動再生", forState: UIControlState.Normal)
         }
-        Lavel.text = String(Lavel.text!)+"   停止"
-        // ボタン１、ボタン３を有効にする
-        self.Btn1.enabled = true
-        self.Btn3.enabled = true
-        // ボタン２のラベルを変更する
-        self.Btn2.setTitle("自動再生", forState: UIControlState.Normal)
     }
     
     // 画面遷移の準備
@@ -121,8 +124,28 @@ class ViewController: UIViewController {
         // 画像のaspect比を維持し、ちょうどはいるようにする
         ImageVew.contentMode = UIViewContentMode.ScaleAspectFit
         
-        //ImageVew.image = myImage2
         self.ImaveSet(CountPosition)
+        
+        /**  Try タップ処理　**/
+        self.ImageVew.userInteractionEnabled = true
+        let myTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapImg:")
+        self.ImageVew.addGestureRecognizer(myTap)
+        /** Try タップ処理　**/
+
+    }
+    
+    //  画像のタップでの処理
+    func tapImg(sender:UITapGestureRecognizer){
+        print("tapped AAAAAAAAAAAAAAAAA")
+
+        let Sv = SecondVew()
+        Sv.z = CountPosition
+        
+        // SecondVewに移動する.
+        let SSv = SecondVew()
+        self.presentViewController(SSv, animated: true, completion: nil)
+        
+        print("tapped ZZZZZZZZZZZZZZZZ")
 
     }
 
