@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
     @IBOutlet weak var Lavel: UILabel!
     @IBOutlet weak var ImageVew: UIImageView!
@@ -157,15 +159,30 @@ class ViewController: UIViewController {
         
         //  SecondVewのzにCountPositionをセットする
         //
+        //let ssv:SecondVew = nextbord.destinationViewController as! SecondVew
         //
-        //
+        //ssv.z = CountPosition
         
+        
+        //①
         let aaa = self.storyboard!.instantiateViewControllerWithIdentifier( "nextbord" )
             // "nextbord"は、SecondVewのStoryBord ID
+        
+        //aaa. = CountPosition
+        
+        // ②
         self.presentViewController( aaa, animated: true, completion: nil)
         
         print("tapped ZZZZZZZZZZZZZZZZ")
     }
+    
+    // CountPositionを渡すために　追加
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.count = CountPosition
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

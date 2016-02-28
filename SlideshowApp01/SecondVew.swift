@@ -41,9 +41,26 @@ class SecondVew: UIViewController {
         default: break
         }
         
-        
     }
     
+    override func viewWillAppear(animated: Bool) {
+        print("tapped WWWWWWW")
+        super.viewDidDisappear(animated)
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        z = appDelegate.count!
+        print( z )
+        
+        // こちらを後から追加した。
+        switch(z){
+        case 0:
+            ImageView201.image = myImage1
+        case 1:
+            ImageView201.image = myImage2
+        case 2:
+            ImageView201.image = myImage3
+        default: break
+        }
+    }
     
     @IBAction func Bottan201(sender: AnyObject) {
     }
