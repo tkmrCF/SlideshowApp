@@ -24,6 +24,14 @@ class SecondVew: UIViewController {
         super.viewDidLoad()
         // Do view setup here.
         
+        //super.viewDidDisappear(animated)
+        //let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //z = appDelegate.count!
+            /* こっちではNG */
+        
+        ImageView201.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        /*　viewDidLoadから下記を削除
         print( z )
         print("tapped BBBBBBBBBB")
 
@@ -40,6 +48,7 @@ class SecondVew: UIViewController {
             ImageView201.image = myImage3
         default: break
         }
+        */
         
     }
     
